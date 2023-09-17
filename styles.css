@@ -1,0 +1,60 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+body {
+  margin:0;
+  font-size: 1rem;
+  font-family: sans-serif;
+  background: #111;
+  color: #ddd;
+}
+header {
+  padding: 30px;
+}
+h1 {
+  text-align: center;
+  font-family: Cormorant SC;
+}
+.container {
+  font-family: Cormorant;
+  color: #111;
+  margin: 0 auto;
+  max-width: 500px;
+  background:#ddd;
+  border-radius: 15px;
+  padding: 20px 0;
+  font-size: 1.3rem;
+}
+.innerDiv {
+  padding: 10px 30px;
+  line-height: 2;
+}
+.innerDiv select {
+  padding: 5px;
+  border-radius: 5px;
+  font-size:1rem;
+  width: 100%;
+}
+input[type="submit"] {
+  padding:15px;
+  background:#fff;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+table {
+  width: 100%;
+  margin: 20px;
+}
+th {
+  text-align: left;
+  min-width: 30px;
+}
+p {
+  padding: 0px 20px;
+}
+.red {
+  color: #a00;
+}
+.green {
+  color: #070;
+}
