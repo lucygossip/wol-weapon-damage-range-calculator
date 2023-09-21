@@ -34,6 +34,22 @@ function createTableOption(rowId, option) {
   row.appendChild(tHeader);
 }
 
+function createCheckbox(location, labelName, checkboxId) {
+  let parent = document.getElementById(location);
+  let innerDiv = document.createElement("div");
+  let checkbox = document.createElement("input");
+  let label = document.createElement("label");
+
+  checkbox.type = "checkbox";
+  checkbox.id = checkboxId;
+  innerDiv.classList.add("innerDiv");
+  label.textContent = labelName;
+
+  parent.appendChild(innerDiv);
+  innerDiv.appendChild(checkbox);
+  innerDiv.appendChild(label);
+}
+
 let ranks = [
   "Civilian",
   "Wanderer",
@@ -77,40 +93,40 @@ for (let i = 0; i < rangedWeapons.length; i++) {
   weapons.push(j);
 }
 
-let status6 = ["Ocean's Razor"];
+let status6 = ["Ocean's Razor*"];
 for (let i = 0; i < status6.length; i++) {
   let j = new createWeapon(`${status6[i]}*`, "status6");
   weapons.push(j);
 }
 
-let status7 = ["Valikal Steamblade"];
+let status7 = ["Valikal Steamblade*"];
 for (let i = 0; i < status7.length; i++) {
   let j = new createWeapon(`${status7[i]}*`, "status7");
   weapons.push(j);
 }
 
 let status8 = [
-  "Adez K'Orgaz",
-  "Mir'Tyela",
-  "Rain Bow",
-  "Witch Blade",
-  "Ender Bow",
-  "Dual Nephrite Daggers"
+  "Adez K'Orgaz*",
+  "Mir'Tyela*",
+  "Rain Bow*",
+  "Witch Blade*",
+  "Ender Bow*",
+  "Dual Nephrite Daggers*"
 ];
 for (let i = 0; i < status8.length; i++) {
-  let j = new createWeapon(`${status8[i]}*`, "status8");
+  let j = new createWeapon(`${status8[i]}`, "status8");
   weapons.push(j);
 }
 
-let status9 = ["Eykirris", "Hellraiser"];
+let status9 = ["Eykirris*", "Hellraiser*"];
 for (let i = 0; i < status9.length; i++) {
-  let j = new createWeapon(`${status9[i]}*`, "status9");
+  let j = new createWeapon(`${status9[i]}`, "status9");
   weapons.push(j);
 }
 
-let status10 = ["Aspergil"];
+let status10 = ["Aspergil*"];
 for (let i = 0; i < status10.length; i++) {
-  let j = new createWeapon(`${status10[i]}*`, "status10");
+  let j = new createWeapon(`${status10[i]}`, "status10");
   weapons.push(j);
 }
 
@@ -174,6 +190,10 @@ let weaponSel = document.getElementById("weapon");
 for (let i = 0; i < weapons.length; i++) {
   weaponSel.appendChild(createOption(weapons[i].name));
 }
+
+createCheckbox("container", "Archery Mastery", "archery-mastery");
+
+createCheckbox("container", "Melee Combat Mastery", "melee-mastery");
 
 /*let submit = document.createElement("input");
 submit.type = "submit";
@@ -499,6 +519,56 @@ document.addEventListener("change", (e) => {
           }
         }
       }
+  }
+
+  let archeryMastery = document.getElementById("archery-mastery");
+  let meleeMastery = document.getElementById("melee-mastery");
+  if (archeryMastery.checked === true) {
+    console.log("Checked");
+  }
+
+  for (let i = 0; i < weapons.length; i++) {
+    if (weapons[i].name == weaponChoice) {
+      console.log("Weapon choice matches");
+      if (
+        (weapons[i].type === "Ranged" && archeryMastery.checked === true) ||
+        (weaponChoice === "Rain Bow*" && archeryMastery.checked === true) ||
+        (weaponChoice === "Ender Bow*" && archeryMastery.checked === true) ||
+        (weaponChoice === "Mir'Tyela*" && archeryMastery.checked === true)
+      ) {
+        console.log("Ranged, checked");
+        damage.shift();
+        let valueOfLastIndex = damage[3];
+        console.log(valueOfLastIndex);
+        damage.push(valueOfLastIndex + 1);
+        console.log(damage);
+      }
+      if (
+        ([
+          weapons[i].type === "Melee one handed" ||
+            weapons[i].type === "Melee two handed"
+        ] &&
+          meleeMastery.checked === true) ||
+        ([
+          weaponChoice === "Adez K'orgaz*" ||
+            weaponChoice === "Ocean's Razor*" ||
+            weaponChoice === "Valikal Steamblade*" ||
+            weaponChoice === "Witch Blade*" ||
+            weaponChoice === "Dual Nephrite Daggers*" ||
+            weaponChoice === "Eykirris*" ||
+            weaponChoice === "Hellraiser*" ||
+            weaponChoice === "Aspergil*"
+        ] &&
+          meleeMastery.checked === true)
+      ) {
+        console.log("Melee, checked");
+        damage.shift();
+        let valueOfLastIndex = damage[3];
+        console.log(valueOfLastIndex);
+        damage.push(valueOfLastIndex + 1);
+        console.log(damage);
+      }
+    }
   }
 
   tr2.innerHTML = "";
