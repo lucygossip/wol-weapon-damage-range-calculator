@@ -532,7 +532,7 @@ document.addEventListener("change", (e) => {
       console.log("Weapon choice matches");
       if (
         (weapons[i].type === "Ranged" && archeryMastery.checked === true) ||
-        ([weaponChoice === "Rain Bow*" || weaponChoice === "Ender Bow*" || weaponChoice === "Mir'Tyela*"] && archeryMastery.checked === true)
+        ((weaponChoice === "Rain Bow*" || weaponChoice === "Ender Bow*" || weaponChoice === "Mir'Tyela*") && archeryMastery.checked === true)
       ) {
         console.log("Ranged, checked");
         damage.shift();
@@ -542,12 +542,12 @@ document.addEventListener("change", (e) => {
         console.log(damage);
       }
       if (
-        ([
+        ((
           weapons[i].type === "Melee one handed" ||
             weapons[i].type === "Melee two handed"
-        ] &&
+        ) &&
           meleeMastery.checked === true) ||
-        ([
+        ((
           weaponChoice === "Adez K'orgaz*" ||
             weaponChoice === "Ocean's Razor*" ||
             weaponChoice === "Valikal Steamblade*" ||
@@ -556,7 +556,7 @@ document.addEventListener("change", (e) => {
             weaponChoice === "Eykirris*" ||
             weaponChoice === "Hellraiser*" ||
             weaponChoice === "Aspergil*"
-        ] &&
+        ) &&
           meleeMastery.checked === true)
       ) {
         console.log("Melee, checked");
