@@ -532,9 +532,7 @@ document.addEventListener("change", (e) => {
       console.log("Weapon choice matches");
       if (
         (weapons[i].type === "Ranged" && archeryMastery.checked === true) ||
-        (weaponChoice === "Rain Bow*" && archeryMastery.checked === true) ||
-        (weaponChoice === "Ender Bow*" && archeryMastery.checked === true) ||
-        (weaponChoice === "Mir'Tyela*" && archeryMastery.checked === true)
+        ([weaponChoice === "Rain Bow*" || weaponChoice === "Ender Bow*" || weaponChoice === "Mir'Tyela*"] && archeryMastery.checked === true)
       ) {
         console.log("Ranged, checked");
         damage.shift();
