@@ -87,13 +87,13 @@ for (let i = 0; i < rangedWeapons.length; i++) {
 
 let status6 = ["Ocean's Razor*"];
 for (let i = 0; i < status6.length; i++) {
-  let j = new createWeapon(`${status6[i]}*`, "status6");
+  let j = new createWeapon(`${status6[i]}`, "status6");
   weapons.push(j);
 }
 
 let status7 = ["Valikal Steamblade*"];
 for (let i = 0; i < status7.length; i++) {
-  let j = new createWeapon(`${status7[i]}*`, "status7");
+  let j = new createWeapon(`${status7[i]}`, "status7");
   weapons.push(j);
 }
 
