@@ -1,19 +1,27 @@
 /*********************** VISUALS ***************************/
 
-function createSelect(location, labelText, selectId) {
+function createInput(location, labelText, inputId, ifCheckbox) {
   let parent = document.getElementById(location);
-  let container = document.getElementById("container");
   let innerDiv = document.createElement("div");
   let label = document.createElement("label");
-  let select = document.createElement("select");
-
+  
   innerDiv.classList.add("innerDiv");
   label.textContent = labelText;
-  select.id = selectId;
-
+  
   parent.appendChild(innerDiv);
-  innerDiv.appendChild(label);
-  innerDiv.appendChild(select);
+  
+  if(ifCheckbox == "no") {
+    let select = document.createElement("select");
+    select.id = inputId;
+    innerDiv.appendChild(label);
+    innerDiv.appendChild(select);
+  } else if(ifCheckbox == "yes") {
+    let checkbox = document.createElement("input");
+    checkbox.type = "checkbox";
+    checkbox.id = inputId;
+    innerDiv.appendChild(checkbox);
+    innerDiv.appendChild(label);
+  } 
 }
 
 function createOption(optionName) {
@@ -32,22 +40,6 @@ function createTableOption(rowId, option) {
   let tHeader = document.createElement("th");
   tHeader.textContent = option;
   row.appendChild(tHeader);
-}
-
-function createCheckbox(location, labelName, checkboxId) {
-  let parent = document.getElementById(location);
-  let innerDiv = document.createElement("div");
-  let checkbox = document.createElement("input");
-  let label = document.createElement("label");
-
-  checkbox.type = "checkbox";
-  checkbox.id = checkboxId;
-  innerDiv.classList.add("innerDiv");
-  label.textContent = labelName;
-
-  parent.appendChild(innerDiv);
-  innerDiv.appendChild(checkbox);
-  innerDiv.appendChild(label);
 }
 
 let ranks = [
@@ -178,31 +170,21 @@ for (let i = 0; i < weapons.length; i++) {
       "Hellraiser rolls a 1d100, and if a 100 is rolled, it is an insta-kill.";
   }
 }
-
-createSelect("container", "Rank: ", "rank");
+//Create Inputs//
+createInput("container", "Rank: ", "rank", "no");
 let rankSel = document.getElementById("rank");
 for (let i = 0; i < ranks.length; i++) {
   rankSel.appendChild(createOption(ranks[i]));
 }
-
-createSelect("container", "Weapon: ", "weapon");
+createInput("container", "Weapon: ", "weapon", "no");
 let weaponSel = document.getElementById("weapon");
 for (let i = 0; i < weapons.length; i++) {
   weaponSel.appendChild(createOption(weapons[i].name));
 }
+createInput("container", "Archery Mastery", "archery-mastery", "yes");
+createInput("container", "Melee Combat Mastery", "melee-mastery", "yes");
 
-createCheckbox("container", "Archery Mastery", "archery-mastery");
-
-createCheckbox("container", "Melee Combat Mastery", "melee-mastery");
-
-/*let submit = document.createElement("input");
-submit.type = "submit";
-submit.textContent = "Submit";
-let innerDiv = document.createElement("div");
-innerDiv.classList.add("innerDiv");
-container.appendChild(innerDiv);
-innerDiv.appendChild(submit); */
-
+//Create Table//
 let table = document.createElement("table");
 container.appendChild(table);
 
