@@ -548,7 +548,7 @@ document.addEventListener("change", (e) => {
         ) &&
           meleeMastery.checked === true) ||
         ((
-          weaponChoice === "Adez K'orgaz*" ||
+          weaponChoice === "Adez K'Orgaz*" ||
             weaponChoice === "Ocean's Razor*" ||
             weaponChoice === "Valikal Steamblade*" ||
             weaponChoice === "Witch Blade*" ||
